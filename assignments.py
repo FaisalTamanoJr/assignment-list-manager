@@ -15,7 +15,7 @@ def assignments(database):
         elif userOption == 3:
             removeAssignments(database)
         elif userOption == 4:
-            completeAssignments(database)
+            completeAssignment(database)
         else:
             uf.invIn()
 
@@ -103,4 +103,26 @@ def removeAssignments(database):
 
 
 def completeAssignment(database):
-    pass
+    assignment_dict = {}
+    table = [["Assignment No.", "Assignment"]]
+    with open(database) as assignments:
+        assignment = assignments.read()
+        assignment = assignment.split("\n")
+        for items, i in zip(assignment, range(len(assignment))):
+            j = items.split(",")
+            assignment_dict[i] = [j[0], j[1], j[2]]
+            row = [i, j[0]]
+            table.append(row)
+        assignments.close()
+
+    print(tabulate(table, headers="firstrow", tablefmt="fancy_grid"))
+    assignment_no = int(input("Type the assignment no. of the assignment you want to mark as finished: "))
+    assignment_dict[assignment_no][1] = "finished"
+
+    with open(database, "w") as assignment_list:
+        output = ""
+        for items in assignment_dict:
+            output += f"{assignment_dict[items][0]},{assignment_dict[items][1]},{assignment_dict[items][2]}\n"
+        output = output.rstrip("\n")
+        assignment_list.write(output)
+        assignment_list.close()
