@@ -1,6 +1,5 @@
 import assignments
 import useful_functions as uf
-from useful_functions import print_n
 from sys import exit
 database = "database.csv"
 

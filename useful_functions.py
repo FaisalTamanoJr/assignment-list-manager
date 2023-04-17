@@ -18,7 +18,3 @@ def userOption(*args):
 
 def invIn():
     print("\nerror: invalid option\n")
-
-
-def print_n(string):
-    print(f"\n{string}\n")
