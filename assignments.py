@@ -24,13 +24,16 @@ def displayAssignments(database):
     table = [["Assignment", "Status", "Due Date"]]
     with open(database) as assignments:
         assignment = assignments.read()
-        assignment = assignment.split("\n")
-        for items in assignment:
-            i = items.split(",")
-            j = [i[0], i[1], i[2]]
-            table.append(j)
-        assignments.close()
-    print(tabulate(table, headers="firstrow", tablefmt="fancy_grid"))
+        if not assignment:
+            print("error: database empty")
+        else:
+            assignment = assignment.split("\n")
+            for items in assignment:
+                i = items.split(",")
+                j = [i[0], i[1], i[2]]
+                table.append(j)
+            assignments.close()
+            print(tabulate(table, headers="firstrow", tablefmt="fancy_grid"))
 
 
 def addAssignments(database):
