@@ -3,6 +3,7 @@ import grades
 import useful_functions as uf
 from useful_functions import print_n
 from sys import exit
+database = "database.csv"
 
 
 def main():
@@ -12,9 +13,9 @@ def main():
         try:
             userOption = int(input(uf.userOption("Assignments", "Grades")))
             if userOption == 1:
-                assignments.assignments()
+                assignments.assignments(database)
             elif userOption == 2:
-                grades.grades()
+                grades.grades(database)
             else:
                 uf.invIn()
         except ValueError:
@@ -24,7 +25,7 @@ def main():
         try:
             userOption = None
             while userOption not in (1, 2):
-                print("Would you like to exit the program?")
+                print("\nWould you like to exit the program?")
                 userOption = int(input(uf.userOption("Yes", "No")))
                 if userOption == 1:
                     exit()

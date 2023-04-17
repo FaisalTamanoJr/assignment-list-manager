@@ -1,7 +1,7 @@
 import useful_functions as uf
 
 
-def grades():
+def grades(database):
     pass
     # code
 
