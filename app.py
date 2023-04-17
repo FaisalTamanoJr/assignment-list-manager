@@ -1,5 +1,4 @@
 import assignments
-import grades
 import useful_functions as uf
 from useful_functions import print_n
 from sys import exit
@@ -11,11 +10,11 @@ def main():
     exitProgram = False
     while not exitProgram:
         try:
-            userOption = int(input(uf.userOption("Assignments", "Grades")))
+            userOption = int(input(uf.userOption("Assignments", "Exit")))
             if userOption == 1:
                 assignments.assignments(database)
             elif userOption == 2:
-                grades.grades(database)
+                exit()
             else:
                 uf.invIn()
         except ValueError:
